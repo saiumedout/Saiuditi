@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Saiuditi Rout | ML, Quant & Strategy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Portfolio of Saiuditi Rout – IIT Madras Undergraduate specializing in Machine Learning, Quantitative Finance, and Embedded Systems."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --card: #0f172a;
+      --accent: #4f46e5;
+      --accent-soft: rgba(79, 70, 229, 0.12);
+      --accent-strong: rgba(129, 140, 248, 0.22);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.25);
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
+      color: var(--text);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Layout */
+
+    .shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 18px 18px 42px;
+    }
+
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(22px);
+      background: linear-gradient(to bottom,
+        rgba(2, 6, 23, 0.9),
+        rgba(2, 6, 23, 0.4)
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .header-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: conic-gradient(
+        from 180deg,
+        #4f46e5,
+        #22d3ee,
+        #a855f7,
+        #4f46e5
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.6);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 15px;
+      font-weight: 600;
+      color: #020617;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-text span:first-child {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .brand-text span:last-child {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    nav.nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    nav.nav-links a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    nav.nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, #4f46e5, #22d3ee);
+      transition: width 0.2s ease-out;
+    }
+
+    nav.nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .pill {
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 11px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: radial-gradient(circle at top left,
+        rgba(79, 70, 229, 0.2),
+        rgba(15, 23, 42, 0.9)
+      );
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 8px rgba(34, 197, 94, 0.8);
+    }
+
+    /* Hero */
+
+    .hero {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.8fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 840px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-left {
+      padding: 24px 22px 22px;
+      border-radius: 22px;
+      background: radial-gradient(circle at top left,
+                   rgba(79, 70, 229, 0.22),
+                   rgba(15, 23, 42, 0.96));
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.22), transparent 55%),
+        radial-gradient(circle at 75% 0, rgba(129, 140, 248, 0.28), transparent 50%);
+      opacity: 0.72;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tagline {
+      font-size: 13px;
+      color: #c7d2fe;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .hero-title {
+      margin-top: 10px;
+      font-size: clamp(28px, 4vw, 34px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(120deg, #a855f7, #22d3ee);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      margin-top: 9px;
+      font-size: 14px;
+      color: #e5e7eb;
+      max-width: 36rem;
+    }
+
+    .hero-subtitle strong {
+      font-weight: 600;
+      color: #c4b5fd;
+    }
+
+    .hero-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    }
+
+
+    @media (max-width: 640px) {
+      .hero-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .hero-chip {
+      font-size: 11px;
+      border-radius: 999px;
+      padding: 7px 11px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #e5e7eb;
+      white-space: nowrap;
+    }
+
+    .hero-chip span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22d3ee;
+      box-shadow: 0 0 8px rgba(56, 189, 248, 0.9);
+    }
+
+    .hero-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+      align-items: center;
+    }
+
+    .btn {
+      font-size: 13px;
+      border-radius: 999px;
+      padding: 9px 16px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
+        border-color 0.12s ease-out, background 0.12s ease-out;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #4f46e5, #22d3ee);
+      border-color: transparent;
+      box-shadow: 0 10px 30px rgba(56, 189, 248, 0.48);
+      color: #020617;
+      font-weight: 600;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.85);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 16px 40px rgba(56, 189, 248, 0.7);
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: #a5b4fc;
+    }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at top left,
+                   rgba(15, 23, 42, 0.95),
+                   rgba(15, 23, 42, 0.98));
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      padding: 16px 16px 14px;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .card-tag {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .metric-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 12px;
+      margin-top: 4px;
+      color: var(--muted);
+    }
+
+    .metric {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .metric span.value {
+      font-weight: 600;
+      font-size: 14px;
+      color: #e5e7eb;
+    }
+
+    .metric span.label {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Sections */
+
+    section {
+      margin-top: 34px;
+    }
+
+    .section-heading {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #9ca3af;
+      margin-bottom: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-heading::before {
+      content: "";
+      width: 18px;
+      height: 1px;
+      background: linear-gradient(90deg, #22d3ee, #4f46e5);
+      opacity: 0.7;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 840px) {
+      .section-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .text-muted {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .accent-inline {
+      color: #a5b4fc;
+      font-weight: 500;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .badge {
+      font-size: 11px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: #e5e7eb;
+    }
+
+    .badge-strong {
+      background: var(--accent-soft);
+      border-color: rgba(129, 140, 248, 0.8);
+      color: #e0e7ff;
+    }
+
+    /* Timeline */
+
+    .timeline {
+      margin-top: 14px;
+      border-left: 1px dashed rgba(148, 163, 184, 0.4);
+      padding-left: 14px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 18px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -16px;
+      top: 4px;
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: #22d3ee;
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.35);
+    }
+
+    .timeline-title {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .timeline-meta {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    .timeline-body {
+      font-size: 12px;
+      color: #d1d5db;
+      margin-top: 3px;
+    }
+
+    /* Project cards */
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    @media (max-width: 960px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .cards-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .project-card {
+      border-radius: var(--radius-lg);
+      background: var(--card);
+      border: 1px solid var(--border-subtle);
+      padding: 12px 12px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      font-size: 12px;
+    }
+
+    .project-title {
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .project-meta {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .project-body {
+      color: #d1d5db;
+    }
+
+    .pill-small {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: #cbd5f5;
+    }
+
+    /* Two columns flex */
+
+    .columns-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      gap: 18px;
+
+      .columns-2 > div {
+  display: flex;
+}
+.columns-2 .card {
+  flex: 1;
+}
+
+    }
+
+    @media (max-width: 840px) {
+      .columns-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Footer */
+
+    footer {
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(15, 23, 42, 0.95);
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* Links hover accent */
+
+    .link-accent {
+      color: #a5b4fc;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(129, 140, 248, 0.6);
+    }
+
+    .link-accent:hover {
+      border-bottom-style: solid;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-mark">SR</div>
+        <div class="brand-text">
+          <span>Saiuditi Rout</span>
+          <span>Machine Learning · Quant · Strategy</span>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Work & Projects</a>
+        <a href="#story">Extracurricular</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="pill">
+        <span class="pill-dot"></span>
+        <span>Incoming Exchange Student @ Politecnico di Milano</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-content">
+            <p style="
+            font-size:14px;
+            font-weight:700;
+            color:#a5b4fc;
+            letter-spacing:0.06em;
+            text-transform:uppercase;
+            margin-bottom:4px;
+          ">
+            IIT Madras, Electrical Engineering
+          </p>
+          
+          <h1 class="hero-title">
+            Exploring the intersection of <span class="highlight">Machine Learning</span>, <span class="highlight">Strategy</span> and <span class="highlight">Finance</span>.
+          </h1>
+          <p class="hero-subtitle">
+            I am a B.Tech Electrical Engineering student at IIT Madras with a passion for solving complex problems. My work spans <strong>ML research</strong> (Causal Inference, RBFs), <strong>Quant Finance</strong>, and <strong>Business Strategy</strong> at top-tier firms.
+          </p>
+
+          <div class="hero-grid">
+            <div class="hero-chip">
+              <span class="dot"></span>
+              Bain True North Fellow
+            </div>
+            <div class="hero-chip">
+              <span class="dot"></span>
+              KVPY Fellow (AIR 3)
+            </div>
+            <div class="hero-chip">
+              <span class="dot"></span>
+              Best Paper (iDACS)
+            </div>
+            <div class="hero-chip">
+              <span class="dot"></span>
+              JEE Adv Top 0.19%
+            </div>
+            <div class="hero-chip">
+              <span class="dot"></span>
+              Guest of PM (Republic Day)
+            </div>
+            <div class="hero-chip">
+              <span class="dot"></span>
+              Inter IIT Quant Bronze
+            </div>
+          </div>
+
+          <div class="hero-footer">
+            <a href="#contact" class="btn btn-primary">
+              Let’s collaborate
+              <span aria-hidden="true">↗</span>
+            </a>
+            <span class="hero-note">Open to Research & Grad School conversations</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Snapshot</div>
+            <div class="card-tag"></div>
+          </div>
+          <div class="metric-row">
+            <div class="metric">
+              <span class="value">IIT Madras</span>
+              [cite_start]<span class="label">B.Tech EE (CGPA 8.51) [cite: 136]</span>
+            </div>
+            <div class="metric">
+              <span class="value">Exchange</span>
+              [cite_start]<span class="label">Politecnico di Milano ('26) [cite: 136]</span>
+            </div>
+            <div class="metric">
+              <span class="value">Research</span>
+              [cite_start]<span class="label">MBZUAI · IISc · IITM [cite: 144, 150]</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Current focus</div>
+            <div class="card-tag">Bridging Math, Business & AI</div>
+          </div>
+          <p class="text-muted" style="font-size: 12px; margin-top: 4px;">
+            Applying rigorous <span class="accent-inline">mathematical models</span> to diverse fields: from <strong>Causal AI</strong> and <strong>Embedded Systems</strong> to <strong>Financial Markets</strong> and <strong>Corporate Strategy</strong>.
+          </p>
+          <div class="badge-row">
+            <span class="badge badge-strong">Causal Classification (ICE)</span>
+            <span class="badge">Quant Trading</span>
+            <span class="badge">Small Language Models</span>
+            <span class="badge">Customer Insights</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+        <p class="section-heading">About</p>
+        <h2 class="section-title">From Olympiads to Interdisciplinary Research</h2>
+      
+        <div class="section-grid">
+          <div>
+            <p class="text-muted">
+              My journey began with a deep love for science and competition, leading to a <strong>National Rank 3 in KVPY</strong> and invitations to the <strong>International Chemistry Olympiad (Top 1%)</strong>. [cite_start]This foundation in rigorous problem-solving brought me to <span class="accent-inline">IIT Madras</span>. [cite: 220, 222, 224]
+            </p>
+      
+            <p class="text-muted" style="margin-top: 10px;">
+              Over the last few years, I have refused to be boxed into a single domain. I have extracted insights for <strong>Bain & Company</strong>, developed trading algorithms for <strong>Crypto markets</strong>, and researched <strong>Causal AI</strong> at MBZUAI. Whether it's building a Kindle for the blind or presenting a Best Paper on Blockchain security, I am driven by impact and intellectual curiosity.
+            </p>
+      
+            <div class="badge-row">
+              <span class="badge">Mathematics: Probability, Calculus, Linear Algebra</span>
+              <span class="badge">Coding: C/C++, Python, MATLAB, Verilog</span>
+            </div>
+          </div>
+      
+          <div>
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Global Recognition</div>
+              </div>
+              <p class="text-muted" style="font-size: 13px; margin-top: 6px;">
+                My academic path has been marked by excellence on national and global stages. [cite_start]I was invited as a guest of the <strong>Prime Minister of India</strong> for the Republic Day Parade [cite: 223][cite_start], and I am one of only 6 national recipients of the <strong>Bain True North Award</strong>[cite: 184].
+              </p>
+      
+              <p class="text-muted" style="font-size: 13px; margin-top: 6px;">
+                [cite_start]In Spring 2026, I will be expanding my horizons as an exchange student in Computer Science at <strong>Politecnico di Milano</strong>. [cite: 136]
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+
+    <section id="research">
+      <p class="section-heading">Research & Publications</p>
+      <h2 class="section-title">Causal AI, Fractal Math & Embedded Security</h2>
+      <div class="columns-2">
+        <div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-title">Causal Classification of Individual Effects</div>
+              [cite_start]<div class="timeline-meta">MBZUAI Internship · Mentor: Prof. Jin Tian · Dec 2025 - Feb 2026 [cite: 144, 145]</div>
+              <p class="timeline-body">
+                Working on classifying <strong>Individual Causal Effects (ICE)</strong> to predict the sign of treatment impacts (positive, negative, null). [cite_start]Extending frameworks to continuous outcomes using supervised learning (LDA, QDA, SVMs) to handle unobservable potential outcomes. [cite: 148, 149]
+              </p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-title">Fractalised Radial Basis Functions (RBFs)</div>
+              [cite_start]<div class="timeline-meta">Bachelor Thesis & Undergrad Research · Submitted to IEEE ESL [cite: 138, 139]</div>
+              <p class="timeline-body">
+                Investigated a fractalised variant of RBFs as an effective kernel in Machine Learning. [cite_start]Tested cross-domain applications in financial markets, medicine, and electrical engineering. [cite: 157, 158]
+              </p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-title">Blockchain Security for Industrial IoT</div>
+              [cite_start]<div class="timeline-meta">Best Paper Award · 7th Intl Conf on Data Analytics & Cyber Security [cite: 197, 199]</div>
+              <p class="timeline-body">
+                Presented a "Two-Way Security-by-Design Paradigm" for IoT fortification. [cite_start]Proposed a novel method to deliver patches safely across blockchain nodes using Ethereum applications. [cite: 199, 200]
+              </p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Research Interests</div>
+              <div class="card-tag">Key Areas of Exploration</div>
+            </div>
+            <ul class="text-muted" style="font-size: 13px; padding-left: 16px; margin-top: 8px;">
+              <li><strong>Causal Inference & ML:</strong> Classification, ICE, SLMs</li>
+              <li><strong>Quant Finance:</strong> Market making, Algorithmic trading</li>
+              <li><strong>Embedded Systems:</strong> Hardware security, IoT</li>
+              <li><strong>Applied Math:</strong> RBFs, Fractal analysis</li>
+            </ul>
+            <div class="badge-row">
+              <span class="badge badge-strong">Small Language Models (SLMs)</span>
+              <span class="badge">Agentic AI</span>
+              <span class="badge">GraphRAG</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <p class="section-heading">Work & Projects</p>
+      <h2 class="section-title">Corporate Strategy, Quant & Tech</h2>
+      <div class="cards-grid">
+        <article class="project-card">
+          <div class="project-title">Bain & Company (True North Fellow)</div>
+          [cite_start]<div class="project-meta">Summer Internship '25 · Strategy Consulting [cite: 183]</div>
+          <p class="project-body">
+            Developed a customer insights function for a top Indian auto manufacturer. [cite_start]Built the org-structure, defined KPIs, and analyzed market maps to diagnose drop-offs across EV variants. [cite: 184, 186]
+          </p>
+          <span class="pill-small">Strategy · Analytics · KPIs</span>
+        </article>
+
+        <article class="project-card">
+          <div class="project-title">Quant Trading (Inter IIT Bronze)</div>
+          [cite_start]<div class="project-meta">Crypto Markets · BTC/ETH Strategies [cite: 208]</div>
+          <p class="project-body">
+            Developed and backtested trading strategies for cryptocurrency markets. [cite_start]Employed dynamic stop-losses and a combiner to select profitable strategies across timeframes, beating benchmark returns. [cite: 209, 210]
+          </p>
+          <span class="pill-small">Python · Backtesting · Sharpe Ratio</span>
+        </article>
+
+        <article class="project-card">
+          <div class="project-title">TI WiSH Embedded Scholar</div>
+          [cite_start]<div class="project-meta">Texas Instruments · Best Presentation [cite: 187, 188]</div>
+          <p class="project-body">
+            Selected as one of 20 students in India. [cite_start]Worked with C2000 microcontrollers, GPIO, and UART in Embedded C and Assembly. [cite: 188, 189]
+          </p>
+          <span class="pill-small">Embedded C · C2000 · Assembly</span>
+        </article>
+
+        <article class="project-card">
+          <div class="project-title">Dot Reader (Kindle for the Blind)</div>
+          [cite_start]<div class="project-meta">CFI IIT Madras · Social Innovation [cite: 175]</div>
+          <p class="project-body">
+            [cite_start]Created a device using electrical and sensory impulses to simulate touch-based reading, effectively building a "Kindle for the Blind". [cite: 180]
+          </p>
+          <span class="pill-small">Haptics · Embedded Systems</span>
+        </article>
+
+        <article class="project-card">
+          <div class="project-title">AI x Healthcare Startup</div>
+          [cite_start]<div class="project-meta">Stealth Unicorn · London/Remote [cite: 192]</div>
+          <p class="project-body">
+            Deploying AI solutions across Indian army hospitals. [cite_start]Working on Small Language Models (SLMs), knowledge graphs, and GraphRAG architectures. [cite: 193, 194]
+          </p>
+          <span class="pill-small">SLMs · Knowledge Graphs · GraphRAG</span>
+        </article>
+
+        <article class="project-card">
+          <div class="project-title">IITM Satellite Project</div>
+          [cite_start]<div class="project-meta">Student Team · ISRO Launch Expected [cite: 159, 162]</div>
+          <p class="project-body">
+            Worked on the communications module for a nano-satellite designed to detect earthquakes. [cite_start]Handled RX/TX signals, beacons, and antenna transmission testing. [cite: 163]
+          </p>
+          <span class="pill-small">Satellite Comms · VNA · Hardware</span>
+        </article>
+      </div>
+
+      <div style="margin-top: 18px;" class="columns-2">
+        <div>
+          <h3 class="section-title" style="font-size: 16px; margin-bottom: 6px;">Quant & Finance Achievements</h3>
+          <p class="text-muted">
+            Deep dive into financial mathematics and algorithmic trading:
+          </p>
+          <ul class="text-muted" style="font-size: 13px; padding-left: 18px; margin-top: 6px;">
+            <li><strong>JPMC Quant Fellow:</strong> Top 40 in India. [cite_start]Learnt derivatives & market risk. [cite: 191]</li>
+            [cite_start]<li><strong>Quantathon Winner:</strong> Forecasted Nifty 50 closing prices using XGBoost. [cite: 212, 213]</li>
+            [cite_start]<li><strong>WorldQuant Researcher:</strong> Generated Alphas on the BRAIN platform. [cite: 215, 216]</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="section-title" style="font-size: 16px; margin-bottom: 6px;">Tooling & skills</h3>
+          <div class="badge-row">
+            <span class="badge badge-strong">Python · C/C++ · MATLAB</span>
+            <span class="badge">Machine Learning (Torch/Scikit)</span>
+            <span class="badge">Quant Finance & Risk</span>
+            <span class="badge">Embedded C · Assembly</span>
+            <span class="badge">Git · LaTeX · QGIS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="story">
+      <p class="section-heading">Beyond Academics</p>
+      <h2 class="section-title">Leadership, Theatre & Sports</h2>
+      <div class="columns-2">
+        <div>
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Theatre & Oratory</div>
+              <div class="card-tag">Creative Expression</div>
+            </div>
+            <p class="text-muted" style="font-size: 13px; margin-top: 6px;">
+                [cite_start]I am passionate about the stage. I achieved runners-up in the Inter IIT Culturals (Theatre), enacting the lead role in "My Dear Dear World of a Father"[cite: 243]. [cite_start]I have also won "Ways to Say Goodbye" at LitSoc[cite: 249].
+            </p>
+            <p class="text-muted" style="font-size: 13px; margin-top: 6px;">
+                [cite_start]As a speaker, I was awarded <strong>Best Speaker</strong> at the State Independence Day by the Governor and Best Storyteller by Ruskin Bond[cite: 252].
+            </p>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Sports & Leadership</div>
+              <div class="card-tag">Teamwork & Grit</div>
+            </div>
+            <p class="text-muted" style="font-size: 13px; margin-top: 6px;">
+                I believe in a balanced life. [cite_start]I am a <strong>Gold medalist in Basketball</strong> and Silver medalist in Throwball[cite: 261]. [cite_start]I captained the TechSoc Frisbee team to a Silver medal[cite: 261].
+            </p>
+             <p class="text-muted" style="font-size: 13px; margin-top: 6px;">
+                [cite_start]I also give back to the community, teaching energy conservation to 200+ primary students through Urjam and creating audiobooks for the blind[cite: 238, 239].
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <p class="section-heading">Contact</p>
+      <h2 class="section-title">Let’s Connect</h2>
+      <div class="columns-2">
+        <div>
+          <p class="text-muted">
+            I’m always open to discussing <strong>innovative research</strong>, <strong>strategy roles</strong>, or <strong>graduate school opportunities</strong>.
+          </p>
+          <p class="text-muted" style="margin-top: 8px;">
+            If you are working at the intersection of AI, Finance, and Systems, I'd love to hear from you.
+          </p>
+          <div class="badge-row" style="margin-top: 12px;">
+            <span class="badge badge-strong">Open to Research Internships</span>
+            <span class="badge">Open to Grad School Opportunities</span>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Reach out</div>
+              <div class="card-tag">Get in touch</div>
+            </div>
+            <p class="text-muted" style="font-size: 13px; margin-top: 4px;">
+              [cite_start]Email: <a class="link-accent" href="mailto:saiuditi3@gmail.com">saiuditi3@gmail.com</a> [cite: 134]
+            </p>
+            <p class="text-muted" style="font-size: 13px; margin-top: 4px;">
+              [cite_start]Phone: <span class="link-accent">+91 9692134991</span> [cite: 134]
+            </p>
+            <p class="text-muted" style="font-size: 13px; margin-top: 4px;">
+              [cite_start]GitHub: <a class="link-accent" href="https://github.com/saiuditi">github.com/saiuditi</a> [cite: 134]
+            </p>
+            <p class="text-muted" style="font-size: 13px; margin-top: 4px;">
+                [cite_start]LinkedIn: <a class="link-accent" href="https://www.linkedin.com/in/saiuditi-rout-896002315/">Saiuditi Rout</a> [cite: 134]
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Saiuditi Rout · IIT Madras · 2025
+      <br />Machine Learning, Quantitative Finance & Embedded Systems.
+    </footer>
+  </main>
+</body>
+</html>
